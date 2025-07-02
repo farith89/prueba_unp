@@ -14,7 +14,7 @@ instalar requirements.txt
 pip install -r requirements.txt
 python -m spacy download es_core_news_lg
 
-# creacion del Scripts para preparar los datos.
+# Creacion del Scripts para preparar los datos.
 
 [text](preparar_datos.py)
 
@@ -26,7 +26,7 @@ python preparar_datos.py
 
 python -m spacy init config --lang es --pipeline textcat --optimize efficiency --force config.cfg
 
-# configuracion que importa
+# Configuracion que importa
 
 #########################################
 
@@ -48,14 +48,70 @@ factory = "textcat"
 
 #############################################
 
-# llena la configuracion que no nos importa por defecto
+# Llena la configuracion que no nos importa por defecto
 
 python -m spacy init fill-config config.cfg config.cfg
 
 python -m spacy train config.cfg --output ./output
 
-# creacion del Scripts para preparar los datos
+# Creacion del Scripts para preparar los datos
 
 [text](inferencia.py)
 
 python inferencia_datos.py   
+
+
+
+# Comparto las metricas de mi modelo
+
+ "performance":{
+    "cats_score":0.7166666667,
+    "cats_score_desc":"macro F",
+    "cats_micro_p":0.8,
+    "cats_micro_r":0.8,
+    "cats_micro_f":0.8,
+    "cats_macro_p":0.7222222222,
+    "cats_macro_r":0.7777777778,
+    "cats_macro_f":0.7166666667,
+    "cats_macro_auc":1.0,
+    "cats_f_per_type":{
+      "Petici\ufffdn":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "Reclamo":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "Denuncia":{
+        "p":1.0,
+        "r":1.0,
+        "f":1.0
+      },
+      "Solicitud":{
+        "p":0.0,
+        "r":0.0,
+        "f":0.0
+      },
+      "Felicitaci\ufffdn":{
+        "p":1.0,
+        "r":0.6666666667,
+        "f":0.8
+      },
+      "Queja":{
+        "p":0.3333333333,
+        "r":1.0,
+        "f":0.5
+      }
+    },
+    "textcat_loss":0.0000001056
+  }
+
+
+# Subir el proyecto a git
+
+git add .
+git commit -m "Advertencia el git se sube sin el entorno virtual y archivos del modelo por su tamaño"
+git push -u origin main --force
