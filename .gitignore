@@ -1,0 +1,12 @@
+# Ignorar entorno virtual
+venv/
+
+# Ignorar modelo
+output/
+
+# Ignorar
+__pycache__/
+*.pyc
+*.dll
+*.lib
+*.spacy
